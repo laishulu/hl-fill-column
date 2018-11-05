@@ -1,6 +1,5 @@
 ;;; fill-column-marker-mode.el --- Provides syntax text objects. -*- lexical-binding: t; -*-
 
-;;;###autoload
 (defcustom fill-column-marker-column 80
   "column to be marked"
   :type 'integer
