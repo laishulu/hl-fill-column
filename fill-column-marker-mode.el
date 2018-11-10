@@ -12,7 +12,6 @@
   :type 'boolean
   :group 'fill-column-marker)
 
-;; hightlight fill column
 (define-minor-mode fill-column-marker-mode
   "Fill column marker mode."
   ;; The initial value.
