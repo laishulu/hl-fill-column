@@ -5,12 +5,15 @@
 This package provide a minor mode ~fill-column-marker-mode~ which changes the
 face of the fill column. It's based on [[https://github.com/emacsmirror/column-marker][column marker]].
 
-* Usage
-
-The mode is enabled on all buffers by default, and can be toggled by ~fill-column-marker-mode~ cmd.
-
 * Customization
+~fill-column-marker-enable-for-all~ (Default: t)
 
-~fill-column-marker-column~ (Default: 80) Which column should be marked.
+ whether to enable for all buffers
 
-~column-marker-1~ The font face of the maked column
+~fill-column-marker-column~ (Default: 80)
+
+Which column should be marked.
+
+~column-marker-1~
+
+The font face of the maked column
