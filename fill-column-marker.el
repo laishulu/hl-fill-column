@@ -13,6 +13,7 @@
   :group 'fill-column-marker)
 
 (defface marker '((t (:background "darkblack" :foreground "white")))
+  "Face used for fill column marker"
   :group 'fill-column-marker)
 
 (defvar marker-face 'marker
