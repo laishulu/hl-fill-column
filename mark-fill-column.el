@@ -13,14 +13,11 @@
   :group 'mark-fill-column)
 
 (defvar keyword ()
-  "Font lock keyword for fill column"
-  :group 'mark-fill-column)
+  "Font lock keyword for fill column")
 
 (defface face '((t (:background "brightblack" :foreground "white")))
   "Face used to mark fill column"
-  :group 'mark-fill-column)
-
-(defun find (end)
+  :group 'mark-fill-column) (defun find (end)
   "Defines a function to locate a character in column COL.
 Returns the function symbol, named `column-marker-move-to-COL'."
   (let ((start (point)))
