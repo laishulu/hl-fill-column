@@ -62,4 +62,4 @@ Returns the function symbol, named `column-marker-move-to-COL'."
 )
 
 (provide 'fill-column-marker)
-;;; fill-column-marker-mode.el ends here
+;;; fill-column-marker.el ends here
