@@ -2,18 +2,18 @@
 
 * About
 
-This package provide a minor mode ~fill-column-marker-mode~ which changes the
-face of the fill column. It's based on [[https://github.com/emacsmirror/column-marker][column marker]].
+This package provide two modes to mark fill column:
+
+#+CAPTION: Mark fill column
+[[./screenshots/mark-fill-column.png]]
+
+- buffer local minor mode: ~mark-fill-column-mode~
+
+- global minor mode: ~global-mark-fill-column-mode~
 
 * Customization
-~fill-column-marker-enable-for-all~ (Default: t)
 
- whether to enable for all buffers
+- ~mark-fill-column-face~ font face for marking fill column
 
-~fill-column-marker-column~ (Default: 80)
-
-Which column should be marked.
-
-~column-marker-1~
-
-The font face of the maked column
+* Thanks
+Some codes are adapted from [[https://github.com/emacsmirror/column-marker][column-marker]].

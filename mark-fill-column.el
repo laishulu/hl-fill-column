@@ -1,4 +1,31 @@
-;;; mark-fill-column.el --- Provides syntax text objects. -*- lexical-binding: t; -*-
+;;; mark-fill-column.el --- Mark fill column. -*- lexical-binding: t; -*-
+
+;; URL: https://github.com/laishulu/mark-fill-column
+;; Created: November 1, 2018
+;; Keywords: fill column, faces
+;; Package-Requires: ((names "0.5") (emacs "24"))
+;; Version: 0.1
+
+;; This file is not part of GNU Emacs.
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+;; This package provide modes to mark fill column.
+;; For more information see the README in the github repo.
+
+;;; Code:
 
 ;; `define-namespace' is autoloaded, so there's no need to require
 ;; `names'. However, requiring it here means it will also work for
@@ -7,57 +34,61 @@
 
 (define-namespace mark-fill-column-
 
-(defcustom col 80
-  "column to be marked"
-  :type 'integer
-  :group 'mark-fill-column)
-
-(defvar keyword ()
-  "Font lock keyword for fill column")
-(make-variable-buffer-local 'keyword)
+(defvar -keywords ()
+  "Font lock keywords for fill column")
+(make-variable-buffer-local (quote -keywords))
 
 (defface face '((t (:background "brightblack" :foreground "white")))
   "Face used to mark fill column"
   :group 'mark-fill-column)
 
-(defun find (end)
-  "Defines a function to locate a character in column COL.
-Returns the function symbol, named `column-marker-move-to-COL'."
+(defun -find (end)
+  "function to locate a character in fill column"
   (let ((start (point)))
     (when (> end (point-max)) (setq end (point-max)))
 
     ;; Try to keep `move-to-column' from going backward, though it still can.
-    (unless (< (current-column) col) (forward-line 1))
+    (unless (< (current-column) fill-column) (forward-line 1))
 
     ;; Again, don't go backward.  Try to move to correct column.
-    (when (< (current-column) col) (move-to-column col))
+    (when (< (current-column) fill-column) (move-to-column fill-column))
 
     ;; If not at target column, try to move to it.
-    (while (and (< (current-column) col) (< (point) end)
+    (while (and (< (current-column) fill-column) (< (point) end)
                 (= 0 (+ (forward-line 1) (current-column)))) ; Should be bol.
-      (move-to-column col))
+      (move-to-column fill-column))
 
     ;; If at target column, not past end, and not prior to start,
     ;; then set match data and return t.  Otherwise go to start
     ;; and return nil.
-    (if (and (= col (current-column)) (<= (point) end) (> (point) start))
+    (if (and (= fill-column (current-column))
+             (<= (point) end)
+             (> (point) start))
         (progn (set-match-data (list (1- (point)) (point)))
                t)            ; Return t.
       (goto-char start)
       nil)))                ; Returnn nil.
 
 (define-minor-mode mode
-  "Fill column marker mode."
+  "Mark fill column mode"
   :init-value nil
   (if mode
-      (progn (set 'keyword '((find (0 'face prepend t))))
-             (font-lock-add-keywords nil keyword t)
-             (font-lock-fontify-buffer))
-    (font-lock-remove-keywords nil keyword)
-    (set 'keyword nil)))
+      (progn
+        (setq -keywords
+              '((mark-fill-column--find (0 'mark-fill-column-face prepend t))))
+        (font-lock-add-keywords nil -keywords t))
+    (font-lock-remove-keywords nil -keywords)
+    (setq -keywords nil))
+  (font-lock-fontify-buffer))
 
 ;; end of namespace
 )
+
+(define-globalized-minor-mode
+  global-mark-fill-column-mode
+  mark-fill-column-mode
+  (lambda () (mark-fill-column-mode t))
+  :group 'mark-fill-column)
 
 (provide 'mark-fill-column)
 ;;; mark-fill-column.el ends here
