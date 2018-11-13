@@ -14,10 +14,13 @@
 
 (defvar keyword ()
   "Font lock keyword for fill column")
+(make-variable-buffer-local 'keyword)
 
 (defface face '((t (:background "brightblack" :foreground "white")))
   "Face used to mark fill column"
-  :group 'mark-fill-column) (defun find (end)
+  :group 'mark-fill-column)
+
+(defun find (end)
   "Defines a function to locate a character in column COL.
 Returns the function symbol, named `column-marker-move-to-COL'."
   (let ((start (point)))
@@ -41,7 +44,7 @@ Returns the function symbol, named `column-marker-move-to-COL'."
         (progn (set-match-data (list (1- (point)) (point)))
                t)            ; Return t.
       (goto-char start)
-      nil)))                ; Return nil.
+      nil)))                ; Returnn nil.
 
 (define-minor-mode mode
   "Fill column marker mode."
