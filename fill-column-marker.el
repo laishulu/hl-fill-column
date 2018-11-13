@@ -12,7 +12,7 @@
   :type 'integer
   :group 'fill-column-marker)
 
-(defface marker '((t (:background "darkblack" :foreground "white")))
+(defface marker '((t (:background "brightblack" :foreground "white")))
   "Face used for fill column marker"
   :group 'fill-column-marker)
 
@@ -48,7 +48,7 @@ Returns the function symbol, named `column-marker-move-to-COL'."
       (goto-char start)
       nil)))                ; Return nil.
 
-(define-minor-mode mode
+(define-minor-mode maker-mode
   "Fill column marker mode."
   :init-value nil
   :global t
