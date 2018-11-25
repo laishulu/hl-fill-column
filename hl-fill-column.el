@@ -1,6 +1,6 @@
-;;; mark-fill-column.el --- Mark fill column. -*- lexical-binding: t; -*-
+;;; hl-fill-column.el --- Highlight fill column. -*- lexical-binding: t; -*-
 
-;; URL: https://github.com/laishulu/mark-fill-column
+;; URL: https://github.com/laishulu/hl-fill-column
 ;; Created: November 1, 2018
 ;; Keywords: fill column, faces
 ;; Package-Requires: ((names "0.5") (emacs "24"))
@@ -22,7 +22,7 @@
 ;; along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; This package provide modes to mark fill column.
+;; This package provide modes to highlight fill column.
 ;; For more information see the README in the github repo.
 
 ;;; Code:
@@ -32,15 +32,15 @@
 ;; people who don't install through package.el.
 (eval-when-compile (require 'names))
 
-(define-namespace mark-fill-column-
+(define-namespace hl-fill-column-
 
 (defvar -keywords ()
   "Font lock keywords for fill column")
 (make-variable-buffer-local (quote -keywords))
 
 (defface face '((t (:background "brightblack" :foreground "white")))
-  "Face used to mark fill column"
-  :group 'mark-fill-column)
+  "Face used to highlight fill column"
+  :group 'hl-fill-column)
 
 (defun -find (end)
   "function to locate a character in fill column"
@@ -70,12 +70,12 @@
       nil)))                ; Returnn nil.
 
 (define-minor-mode mode
-  "Mark fill column mode"
+  "Highlight fill column mode"
   :init-value nil
   (if mode
       (progn
         (setq -keywords
-              '((mark-fill-column--find (0 'mark-fill-column-face prepend t))))
+              '((hl-fill-column--find (0 'hl-fill-column-face prepend t))))
         (font-lock-add-keywords nil -keywords t))
     (font-lock-remove-keywords nil -keywords)
     (setq -keywords nil))
@@ -84,11 +84,12 @@
 ;; end of namespace
 )
 
+;;;###autoload
 (define-globalized-minor-mode
-  global-mark-fill-column-mode
-  mark-fill-column-mode
-  (lambda () (mark-fill-column-mode t))
-  :group 'mark-fill-column)
+  global-hl-fill-column-mode
+  hl-fill-column-mode
+  (lambda () (hl-fill-column-mode t))
+  :group 'hl-fill-column)
 
-(provide 'mark-fill-column)
-;;; mark-fill-column.el ends here
+(provide 'hl-fill-column)
+;;; hl-fill-column.el ends here
