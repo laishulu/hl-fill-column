@@ -1,6 +1,5 @@
 #+TITLE: README
-
-[[https://melpa.org/#/hl-fill-column][file:https://melpa.org/packages/hl-fill-column.svg]]
+[[https://melpa.org/#/hl-fill-column][file:https://melpa.org/packages/hl-fill-column-badge.svg]]
 
 * About
 
