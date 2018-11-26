@@ -1,5 +1,7 @@
 #+TITLE: README
 
+[[https://melpa.org/#/hl-fill-column][file:https://melpa.org/packages/hl-fill-column.svg]]
+
 * About
 
 This package provide two modes to highlight fill column:
