@@ -23,19 +23,19 @@
 
 ;;; Commentary:
 ;; This package provide modes to highlight fill column.
-;; For more information see the README in the github repo.
+;; For more information see the README in the GitHub repo.
 
 ;;; Code:
 
-;; `define-namespace' is autoloaded, so there's no need to require
-;; `names'. However, requiring it here means it will also work for
-;; people who don't install through package.el.
+;; `define-namespace' is autoloaded, so there's no need to require `names'.
+;; However, requiring it here means it will also work for people who don't
+;; install through package.el.
 (eval-when-compile (require 'names))
 
 (define-namespace hl-fill-column-
 
 (defvar -keywords ()
-  "Font lock keywords for fill column")
+  "Font lock keywords for fill column.")
 (make-variable-buffer-local (quote -keywords))
 
 (defface face '((t (:background "brightblack" :foreground "white")))
@@ -43,7 +43,8 @@
   :group 'hl-fill-column)
 
 (defun -find (end)
-  "function to locate a character in fill column"
+  "Function to locate a character in fill column.
+Look through END when provided."
   (let ((start (point)))
     (when (> end (point-max)) (setq end (point-max)))
 
@@ -58,16 +59,15 @@
                 (= 0 (+ (forward-line 1) (current-column)))) ; Should be bol.
       (move-to-column fill-column))
 
-    ;; If at target column, not past end, and not prior to start,
-    ;; then set match data and return t.  Otherwise go to start
-    ;; and return nil.
+    ;; If at target column, not past end, and not prior to start, then set match
+    ;; data and return t.  Otherwise go to start and return nil.
     (if (and (= fill-column (current-column))
              (<= (point) end)
              (> (point) start))
         (progn (set-match-data (list (1- (point)) (point)))
-               t)            ; Return t.
+               t)                       ; Return t.
       (goto-char start)
-      nil)))                ; Returnn nil.
+      nil)))                            ; Return nil.
 
 (define-minor-mode mode
   "Highlight fill column mode"
