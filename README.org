@@ -1,0 +1,20 @@
+#+TITLE: README
+[[https://melpa.org/#/hl-fill-column][file:https://melpa.org/packages/hl-fill-column-badge.svg]]
+
+* About
+
+This package provide two modes to highlight fill column:
+
+#+CAPTION: Highlight fill column
+[[./screenshots/hl-fill-column.png]]
+
+- buffer local minor mode: ~hl-fill-column-mode~
+
+- global minor mode: ~global-hl-fill-column-mode~
+
+* Customization
+
+- ~hl-fill-column-face~ font face for lighlighting fill column
+
+* Thanks
+Some codes are adapted from [[https://github.com/emacsmirror/column-marker][column-marker]].
