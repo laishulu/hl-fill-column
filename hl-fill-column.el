@@ -64,7 +64,7 @@ Look through END when provided."
     (if (and (= fill-column (current-column))
              (<= (point) end)
              (> (point) start))
-        (progn (set-match-data (list (1- (point)) (point)))
+        (progn (set-match-data (list (point) (+ 1 (point))))
                t)                       ; Return t.
       (goto-char start)
       nil)))                            ; Return nil.
