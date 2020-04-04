@@ -38,11 +38,7 @@
   "Font lock keywords for fill column.")
 (make-variable-buffer-local (quote -keywords))
 
-(defface face
-  (if (equal "dark" (frame-parameter nil 'background-mode))
-      '((t (:background "lightgray" :foreground "black")))
-    '((t (:background "darkgray" :foreground "white")))))
-
+(defface face '((t (:inherit font-lock-keyword-face :inverse-video t)))
   "Face used to highlight fill column"
   :group 'hl-fill-column)
 
