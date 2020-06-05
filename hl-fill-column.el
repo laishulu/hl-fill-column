@@ -38,9 +38,15 @@
   "Font lock keywords for fill column.")
 (make-variable-buffer-local (quote -keywords))
 
-(defface face '((t (:inherit font-lock-keyword-face :inverse-video t)))
+(defface face
+  '()
   "Face used to highlight fill column"
   :group 'hl-fill-column)
+
+(set-face-attribute
+ 'hl-fill-column-face nil
+ :background (face-attribute 'font-lock-keyword-face :foreground)
+ :foreground (face-attribute 'default :background))
 
 (defun -find (end)
   "Function to locate a character in fill column.
