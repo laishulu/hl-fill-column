@@ -45,8 +45,8 @@
 
 (set-face-attribute
  'hl-fill-column-face nil
- :background (face-attribute 'font-lock-keyword-face :foreground)
- :foreground (face-attribute 'default :background))
+ :foreground (face-attribute 'font-lock-keyword-face :foreground)
+ :inverse-video t)
 
 (defun -find (end)
   "Function to locate a character in fill column.
