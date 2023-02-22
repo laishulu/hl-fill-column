@@ -1,7 +1,7 @@
 #+TITLE: README
 [[https://melpa.org/#/hl-fill-column][file:https://melpa.org/packages/hl-fill-column-badge.svg]]
 
-**NOTE**
+*NOTE*:
 Emacs 27 introduced ~display-fill-column-indicator-mode~ and
 ~global-display-fill-column-indicator-mode~, which are more powerful and
 reliable. So This package is now **OBSOLETE**.
