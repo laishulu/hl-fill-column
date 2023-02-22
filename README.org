@@ -4,7 +4,7 @@
 *NOTE*:
 Emacs 27 introduced powerful and reliable ~display-fill-column-indicator-mode~
 and ~global-display-fill-column-indicator-mode~. So this package is now
-**OBSOLETE**.
+*OBSOLETE*.
 
 * About
 
