@@ -2,9 +2,9 @@
 [[https://melpa.org/#/hl-fill-column][file:https://melpa.org/packages/hl-fill-column-badge.svg]]
 
 *NOTE*:
-Emacs 27 introduced ~display-fill-column-indicator-mode~ and
-~global-display-fill-column-indicator-mode~, which are more powerful and
-reliable. So This package is now **OBSOLETE**.
+Emacs 27 introduced powerful and reliable ~display-fill-column-indicator-mode~
+and ~global-display-fill-column-indicator-mode~. So this package is now
+**OBSOLETE**.
 
 * About
 
