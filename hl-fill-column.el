@@ -27,18 +27,11 @@
 
 ;;; Code:
 
-;; `define-namespace' is autoloaded, so there's no need to require `names'.
-;; However, requiring it here means it will also work for people who don't
-;; install through package.el.
-(eval-when-compile (require 'names))
-
-(define-namespace hl-fill-column-
-
-(defvar -keywords ()
+(defvar hl-fill-column--keywords ()
   "Font lock keywords for fill column.")
-(make-variable-buffer-local (quote -keywords))
+(make-variable-buffer-local (quote hl-fill-column--keywords))
 
-(defface face
+(defface hl-fill-column-face
   '()
   "Face used to highlight fill column"
   :group 'hl-fill-column)
@@ -48,7 +41,7 @@
  :foreground (face-attribute 'font-lock-keyword-face :foreground)
  :inverse-video t)
 
-(defun -find (end)
+(defun hl-fill-column--find (end)
   "Function to locate a character in fill column.
 Look through END when provided."
   (let ((start (point))
@@ -76,20 +69,17 @@ Look through END when provided."
       (goto-char start)
       nil)))                            ; Return nil.
 
-(define-minor-mode mode
+(define-minor-mode hl-fill-column-mode
   "Highlight fill column mode"
   :init-value nil
-  (if mode
+  (if hl-fill-column-mode
       (progn
-        (setq -keywords
+        (setq hl-fill-column--keywords
               '((hl-fill-column--find (0 'hl-fill-column-face prepend t))))
-        (font-lock-add-keywords nil -keywords t))
-    (font-lock-remove-keywords nil -keywords)
-    (setq -keywords nil))
+        (font-lock-add-keywords nil hl-fill-column--keywords t))
+    (font-lock-remove-keywords nil hl-fill-column--keywords)
+    (setq hl-fill-column--keywords nil))
   (font-lock-fontify-buffer))
-
-;; end of namespace
-)
 
 ;;;###autoload
 (define-globalized-minor-mode
